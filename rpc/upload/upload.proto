@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package upload;
+option go_package = "./upload";
+
+message FileUploadReq {
+  bytes  file = 1;
+  string fileName = 2;
+  string fileType = 3;
+  string oriFolder = 4;
+  string Folder = 5;
+  string bucketName = 6;
+  uint32 quality = 7;
+  uint32 w = 8;
+  uint32 h = 9;
+  string type = 10;
+  string userId = 11;
+}
+
+message FileUploadRes {
+  string fileName = 1;
+  string oriFilePath = 2;
+  string filePath = 3;
+}
+
+service Upload {
+  rpc FileUpload(FileUploadReq) returns(FileUploadRes);
+}

@@ -1,0 +1,22 @@
+Name: upload.rpc
+ListenOn: 0.0.0.0:8080
+MySQLConf:
+  Host: '47.109.86.251'
+  Port: 3306
+  Database: boyyangblog
+  Username: boyyang
+  Password: bZKk22bAJZrr454i
+  Charset: utf8mb4
+  Collation: utf8mb4_unicode_ci
+  Timeout: 10s
+
+MinioClientConf:
+  Endpoint: 47.109.86.251:9000
+  AccessKey: nORa7vVFmamIow77uug4
+  SecretKey: LZRLI5glyKZaoJsUQH87E74PxJENTazFSAIOuiCI
+  Secure: true
+
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: upload.rpc
