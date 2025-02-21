@@ -1,0 +1,1 @@
+goctl rpc protoc user.proto --go_out=./pb --go-grpc_out=./pb --zrpc_out=. --client=true

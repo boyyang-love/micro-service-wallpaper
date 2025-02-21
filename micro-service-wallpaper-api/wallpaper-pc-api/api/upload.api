@@ -1,0 +1,35 @@
+syntax = "v1"
+
+import "./base.api"
+
+type (
+    ImageUploadReq {
+        FileName string `form:"file_name"`
+        RootDir string `form:"root_dir"`
+        Dir string `form:"dir"`
+        Type string `form:"type"`
+        BucketName string `form:"bucket_name"`
+        Quality int `form:"quality,optional,default=50"`
+    }
+    ImageUploadRes {
+        Base
+        Data ImageUploadResdata `json:"data"`
+    }
+    ImageUploadResdata {
+        FileName string `json:"file_name"`
+        Path string `json:"path"`
+        OriginPath string `json:"origin_path"`
+    }
+)
+
+@server(
+    group: upload
+    jwt: Auth
+    maxBytes: 20971520
+    timeout:  50s
+)
+service wallpaper_pc_backend {
+    @handler ImageUpload
+    post /image/upload (ImageUploadReq) returns (ImageUploadRes)
+}
+

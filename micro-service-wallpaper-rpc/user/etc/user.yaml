@@ -1,5 +1,5 @@
-Name: upload.rpc
-ListenOn: 0.0.0.0:8080
+Name: user.rpc
+ListenOn: 0.0.0.0:8081
 Timeout: 25000
 # 日志
 Log:
@@ -14,14 +14,8 @@ MySQLConf:
   Charset: utf8mb4
   Collation: utf8mb4_unicode_ci
   Timeout: 10s
-# minio
-MinioClientConf:
-  Endpoint: 47.109.86.251:9000
-  AccessKey: nORa7vVFmamIow77uug4
-  SecretKey: LZRLI5glyKZaoJsUQH87E74PxJENTazFSAIOuiCI
-  Secure: false
-
+# etcd
 Etcd:
   Hosts:
   - 127.0.0.1:2379
-  Key: upload.rpc
+  Key: user.rpc

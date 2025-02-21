@@ -27,3 +27,8 @@ func (s *UploadServer) FileUpload(ctx context.Context, in *upload.FileUploadReq)
 	l := logic.NewFileUploadLogic(ctx, s.svcCtx)
 	return l.FileUpload(in)
 }
+
+func (s *UploadServer) ImageUpload(ctx context.Context, in *upload.ImageUploadReq) (*upload.ImageUploadRes, error) {
+	l := logic.NewImageUploadLogic(ctx, s.svcCtx)
+	return l.ImageUpload(in)
+}

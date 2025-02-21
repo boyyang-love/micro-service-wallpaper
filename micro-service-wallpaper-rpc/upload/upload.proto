@@ -3,26 +3,54 @@ syntax = "proto3";
 package upload;
 option go_package = "./upload";
 
+message Base{
+  int32 Code = 1;
+  string Msg = 2;
+}
+
 message FileUploadReq {
-  bytes  file = 1;
-  string fileName = 2;
-  string fileType = 3;
-  string oriFolder = 4;
-  string Folder = 5;
-  string bucketName = 6;
-  uint32 quality = 7;
-  uint32 w = 8;
-  uint32 h = 9;
-  string type = 10;
-  string userId = 11;
+  bytes  File = 1;
+  string FileName = 2;
+  string Path = 3;
+  string BucketName = 4;
 }
 
 message FileUploadRes {
-  string fileName = 1;
-  string oriFilePath = 2;
-  string filePath = 3;
+  Base base = 1;
+  FileUploadResData data = 2;
+}
+
+message FileUploadResData {
+  string FileName = 1;
+  string Path = 2;
+  string ETag = 3;
+  uint64 Size = 4;
+}
+
+message ImageUploadReq {
+  bytes  File = 1;
+  string FileName = 2;
+  string Path = 3;
+  string OriPath = 4;
+  uint32 Quality = 5;
+  string BucketName = 6;
+}
+
+message ImageUploadRes {
+  Base base = 1;
+  ImageUploadResData data = 2;
+}
+
+message ImageUploadResData {
+  string Path = 1;
+  string OriPath = 2;
+  string ETag = 3;
+  string OriETag = 4;
+  uint64 Size = 5;
+  uint64 OriSize = 6;
 }
 
 service Upload {
   rpc FileUpload(FileUploadReq) returns(FileUploadRes);
+  rpc ImageUpload(ImageUploadReq) returns(ImageUploadRes);
 }

@@ -1,0 +1,34 @@
+Name: wallpaper_pc_backend
+Host: 0.0.0.0
+Port: 8888
+Timeout: 25000
+Log:
+  Mode: file
+# mysql
+MySQLConf:
+  Host: 47.109.86.251
+  Port: 3306
+  Database: boyyangblog
+  Username: boyyang
+  Password: bZKk22bAJZrr454i
+  Charset: utf8mb4
+  Collation: utf8mb4_unicode_ci
+  Timeout: 10s
+Auth:
+  AccessSecret: boyyangBlog
+  AccessExpire: 86_400_000
+#文件上传
+UploadRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: upload.rpc
+  Timeout: 25000
+
+#文件上传
+UserRpc:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
+  Timeout: 25000

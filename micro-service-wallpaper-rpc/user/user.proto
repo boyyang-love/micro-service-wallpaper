@@ -1,0 +1,76 @@
+syntax = "proto3";
+
+package user;
+option go_package = "./user";
+
+message Base{
+  uint32 Code = 1;
+  string Msg = 2;
+}
+
+message AddUserReq {
+  string Username = 1;
+  string Account = 2;
+  string Password = 3;
+  string Role = 4;
+}
+
+message AddUserRes {
+  Base base = 1;
+  AddUserResData data = 2;
+}
+
+message AddUserResData {
+  uint64 Id = 1;
+  string Username = 2;
+  string Account = 3;
+}
+
+message UpdateUserReq {
+  uint64 Id = 1;
+  string Motto = 2;
+  string Address = 3;
+  string Tel = 4;
+  string Email = 5;
+  string QQ = 6;
+  string Wechat = 7;
+  string GitHub = 8;
+  string Role = 9;
+  string Avatar = 10;
+  string Cover = 11;
+}
+
+message UpdateUserRes{
+  Base base = 1;
+}
+
+message UserInfoReq {
+  uint64 Id = 1;
+}
+
+message UserInfoRes {
+  Base base = 1;
+  UserInfoResData data = 2;
+}
+
+message UserInfoResData {
+  uint64 Id = 1;
+  string Username = 2;
+  string Account = 3;
+  string Motto = 4;
+  string Address = 5;
+  string Tel = 6;
+  string Email = 7;
+  string QQ = 8;
+  string Wechat = 9;
+  string GitHub = 10;
+  string Role = 11;
+  string Avatar = 12;
+  string Cover = 13;
+}
+
+service User {
+  rpc AddUser(AddUserReq) returns(AddUserRes);
+  rpc UpdateUser(UpdateUserReq) returns(UpdateUserRes);
+  rpc UserInfo(UserInfoReq) returns(UserInfoRes);
+}
